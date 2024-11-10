@@ -11,5 +11,6 @@ Giao diện Ứng dụng : ảnh test ra kết quả tốt nhất là ảnh phon
 
 ![image](https://github.com/user-attachments/assets/a1352834-2920-4c9f-a0d5-cb15dcca302b)
 ảnh test "
-![image](https://github.com/user-attachments/assets/e77df2d4-a522-48da-8417-a989b607fc36)
+![image](https://github.com/user-attachments/assets/ae5ae4b0-e2b2-44fe-b6e5-5ed9da32e63f)
+
 
