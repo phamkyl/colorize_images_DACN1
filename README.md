@@ -1,7 +1,7 @@
 Màu hóa ảnh bằng kỹ thuật Deep Learning
 Ảnh trắng đen --> ảnh màu 
 -----------------
-dataset : /kaggle/input/landscape-image-colorization
+dataset :[ /kaggle/input/landscape-image-colorization](https://www.kaggle.com/datasets/theblackmamba31/landscape-image-colorization)
 
 model : colorize_image012.h5
 
