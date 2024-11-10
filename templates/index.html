@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Colorization</title>
+  <style>
+    /* Reset default styles and apply custom styles */
+    body {
+      font-family: "Raleway", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, lightgray 10%, #f0f0f0 50%);
+    }
+
+    /* Typography */
+       h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 40px;
+      color: green;
+      transition: all 0.4s ease;
+    }
+
+    h1 span {
+      display: block;
+      font-size: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .hr_tag {
+      width: 15%;
+      height: 4px;
+      background-color: green;
+      margin: 10px auto;
+      border: none;
+    }
+
+    /* Form and button styling */
+    .cen_buton_input, .cen_buton_output {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: green;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    /* Layout and alignment */
+    .center {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .cen-h1 {
+      margin-bottom: 20px;
+    }
+
+    .cen_buton_in_out {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .h2-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .h2-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .h2_title {
+      margin: 10px 0;
+    }
+
+    .display_image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 300px;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="cen-h1">
+      <h1>Colorize Image</h1>
+      <span>Convert Image (gray to color)</span>
+      <hr class="hr_tag">
+    </div>
+    <form id="upload-form" action="/colorize" method="post" enctype="multipart/form-data">
+      <div class="cen_buton_in_out">
+        <div class="cen_buton_input">
+          <div class="h2-upload">
+            <div class="h2-row">
+              <h2 class="h2_title">Gray image</h2>
+              <input type="file" name="file" accept="image/*" required>
+            </div>
+            <div class="display_image">
+              <img id="original-image" src="" alt="Original Image" style="display: none;">
+            </div>
+          </div>
+        </div>
+        <div class="cen_buton_output">
+          <div class="h2-upload">
+            <div class="h2-row">
+              <h2 class="h2_title">Color image</h2>
+              <button type="submit">Upload and Colorize</button>
+            </div>
+            <div class="display_image">
+              <img id="colorized-image" src="" alt="Colorized Image" style="display: none;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <footer>
+      <p>@KylePham - Tram design</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('upload-form');
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch('/colorize', {
+        method: 'POST',
+        body: formData
+      });
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      document.getElementById('original-image').style.display = 'block';
+      document.getElementById('original-image').src = URL.createObjectURL(formData.get('file'));
+      document.getElementById('colorized-image').style.display = 'block';
+      document.getElementById('colorized-image').src = url;
+    }
+  </script>
+</body>
+</html>
