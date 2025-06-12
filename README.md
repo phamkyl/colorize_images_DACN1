@@ -6,6 +6,7 @@ dataset :[ /kaggle/input/landscape-image-colorization](https://www.kaggle.com/da
 model : colorize_image012.h5
 
 Train : https://drive.google.com/file/d/1y12WnWzUSvc2X2rmRtZTeNguFkyMalHn/view?usp=sharing
+file train model 2 : 
 
 Giao diện Ứng dụng : ảnh test ra kết quả tốt nhất là ảnh phong cảnh vì tập train là dữ liệu ảnh phong cảnh
 Run App : file appV02.py 
